@@ -3,6 +3,7 @@
 // Made by Griffin Smith
 
 #include <stdio.h>
+#define RILEY 36
 
 // Finds length of a char type passed into it using the fact that it is null terminated
 int length(char *ptr){
@@ -43,8 +44,7 @@ int main(int argc, char **argv)
   }
 
   // Error handling for case where base is more than the amount of letters and numbers combined
-  int riley = 36;
-  if(base_int>riley || base_int<2)
+  if(base_int>RILEY || base_int<2)
   {
     printf("INVALID BASE \n");
     return -1;
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
     // Capitol Letters
     if(number[i] > 64 && number[i] < 91)
     {
-      if (number[i] - 54 > base_int )
+      if (number[i] - 'A' + 11 > base_int )
       {
         printf("INVALID VALUE \n");
         return -1;
@@ -70,7 +70,17 @@ int main(int argc, char **argv)
     // Lower Case Letters
     if(number[i] < 123 && number[i] > 96)
     {
-      if (number[i] - 86 > base_int )
+      if (number[i] - 'a' +11 > base_int )
+      {
+        printf("INVALID VALUE \n");
+        return -1;
+      }
+    }
+
+    // Numbers
+    if(number[i] >= '0' && number[i] <= '9')
+    {
+      if (number[i] - '0' > base_int )
       {
         printf("INVALID VALUE \n");
         return -1;
